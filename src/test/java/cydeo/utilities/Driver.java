@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -59,14 +60,15 @@ public class Driver {
                         e.printStackTrace();
                     }
                     break;
-                case "remote-firefox":
+                case "remote-edge":
                     try {
                         // assign your grid server address
                         String gridAddress = "54.162.50.13";
                         URL url = new URL("http://"+ gridAddress + ":4444/wd/hub");
-                        FirefoxOptions firefoxOptions=new FirefoxOptions();
-                        firefoxOptions.addArguments("--start-maximized");
-                        driverPool.set(new RemoteWebDriver(url, firefoxOptions));
+                        EdgeOptions edgeOptions = new EdgeOptions();
+                        //FirefoxOptions firefoxOptions=new FirefoxOptions();
+                        edgeOptions.addArguments("--start-maximized");
+                        driverPool.set(new RemoteWebDriver(url, edgeOptions));
                         //driverPool.set(new RemoteWebDriver(new URL("http://0.0.0.0:4444/wd/hub"),desiredCapabilities));
 
                     } catch (Exception e) {
